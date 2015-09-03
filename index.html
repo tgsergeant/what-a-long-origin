@@ -1,0 +1,54 @@
+<html>
+<head>
+<title>Wow, that domain must have taken a while to type out</title>
+<!-- Roughly based off https://github.com/adrifelt/adrifelt.github.io/blob/master/demos/all-permissions.html -->
+<style>
+body {
+  text-align: center;
+  background-color: rgb(225, 225, 225);
+}
+
+button {
+  background-color: #fff;
+  border: none;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+  font-size: 1.5em;
+  padding: 0.5em;
+  width: 400px;
+}
+
+iframe {
+  height: 400px;
+  width: 600px;
+  border: none;
+}
+</style>
+</head
+
+<body>
+  <button id="geo">Geolocation</button>
+  <button id="iframe-btn">All permissions (iframed)</button>
+  <hr />
+  
+  <div id="iframes">
+  </div>
+  
+  <script type="text/javascript">
+    document.getElementById("geo").addEventListener("click", function(e) {
+      navigator.geolocation.getCurrentPosition(function() {
+        console.log("We did it");
+      }, function() {
+        console.log("We didn't do it");
+      });
+    });
+    
+    document.getElementById("iframe-btn").addEventListener("click", function(e) {
+      var elem = document.createElement("iframe")
+      elem.src = "https://adrifelt.github.io/demos/all-permissions.html"
+      document.getElementById("iframes").appendChild(elem);
+      document.getElementById("iframe-btn").disabled = true;
+    });
+  </script>
+</body>
+
+</html>
